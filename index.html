@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS ARCADE // Neon-Cyberpunk Gaming Portal</title>
+  <meta name="description" content="A futuristic gaming hub. Pick a cartridge, jack in, play." />
+
+  <!-- Google Fonts: Orbitron (display / cyber) + Rajdhani (body / HUD-style UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       BACKGROUND FX LAYER (fixed, decorative, non-interactive)
+       ============================================================ -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--cyan" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--magenta" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       TOP NAVBAR
+       ============================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__left">
+      <!-- Sidebar toggle (also present here for quick access on desktop) -->
+      <button class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sidebar">
+        <span class="burger">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+
+      <a href="#top" class="brand" aria-label="NEXUS ARCADE home">
+        <span class="brand__glyph">&#9059;</span>
+        <span class="brand__text" data-text="NEXUS ARCADE">NEXUS ARCADE</span>
+      </a>
+    </div>
+
+    <div class="navbar__right">
+      <span class="signal" aria-hidden="true">
+        <span class="signal__bar"></span>
+        <span class="signal__bar"></span>
+        <span class="signal__bar"></span>
+      </span>
+
+      <div class="user-chip">
+        <span class="user-chip__avatar" role="img" aria-label="User avatar placeholder">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M5 19.2C5 15.9 8.1 14 12 14C15.9 14 19 15.9 19 19.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span class="user-chip__status" title="Online" aria-label="Online"></span>
+        </span>
+        <span class="user-chip__name">PLAYER_01</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SIDEBAR (collapsible, semantic <nav>)
+       ============================================================ -->
+  <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
+    <div class="sidebar__header">
+      <span class="sidebar__eyebrow">// MAIN MENU</span>
+    </div>
+
+    <ul class="sidebar__list">
+      <li>
+        <a href="#top" class="sidebar__link is-active">
+          <span class="sidebar__icon" aria-hidden="true">&#9634;</span>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="#games" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">&#9689;</span>
+          <span>All Games</span>
+        </a>
+      </li>
+      <li>
+        <a href="#leaderboard" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">&#9650;</span>
+          <span>Leaderboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#about" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">&#9711;</span>
+          <span>About Us</span>
+        </a>
+      </li>
+      <li>
+        <a href="#contact" class="sidebar__link">
+          <span class="sidebar__icon" aria-hidden="true">&#9670;</span>
+          <span>Contact</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar__footer">
+      <p>SYS.STATUS <span class="ok">ONLINE</span></p>
+    </div>
+  </nav>
+
+  <!-- Backdrop that closes the sidebar when clicked (mobile) -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main class="main" id="top">
+
+    <section class="hero">
+      <p class="hero__eyebrow">// SELECT YOUR CARTRIDGE</p>
+      <h1 class="hero__title">JACK IN. PLAY&nbsp;NOW.</h1>
+      <p class="hero__subtitle">Five signal-boosted cartridges are live on the grid. Launch one below&mdash;no downloads, no waiting.</p>
+    </section>
+
+    <!-- ============================================================
+         GAME GRID
+         ============================================================ -->
+    <section class="game-section" id="games" aria-label="Available games">
+
+      <div class="game-grid" id="gameGrid">
+        <!-- Game cards are rendered by script.js from the GAME_REGISTRY,
+             but static markup is included here for a11y / no-JS fallback. -->
+      </div>
+
+    </section>
+
+    <section class="leaderboard-stub" id="leaderboard">
+      <h2 class="section-heading"><span>02.</span> Leaderboard</h2>
+      <p class="section-note">Rankings sync once a cartridge reports its first score. Launch a game to get on the board.</p>
+    </section>
+
+    <section class="about-stub" id="about">
+      <h2 class="section-heading"><span>03.</span> About Us</h2>
+      <p class="section-note">NEXUS ARCADE is a lightweight portal for quick-fire browser games&mdash;each cartridge loads independently, so the grid stays fast no matter how many titles it holds.</p>
+    </section>
+
+    <section class="contact-stub" id="contact">
+      <h2 class="section-heading"><span>04.</span> Contact</h2>
+      <p class="section-note">Bug reports and cartridge requests: route them through the Social Connect links below.</p>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       GAME MODAL / STAGE (where the launched cartridge renders)
+       ============================================================ -->
+  <div class="game-stage" id="gameStage" role="dialog" aria-modal="true" aria-labelledby="gameStageTitle" hidden>
+    <div class="game-stage__panel">
+      <header class="game-stage__header">
+        <h2 class="game-stage__title" id="gameStageTitle">CARTRIDGE</h2>
+        <button class="icon-btn game-stage__close" id="gameStageClose" aria-label="Close game">&times;</button>
+      </header>
+      <div class="game-stage__body" id="gameStageBody">
+        <!-- Individual game scripts mount their game here via #gameStageBody -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__copy">&copy; <span id="year"></span> NEXUS ARCADE. All rights reserved.</p>
+
+      <div class="footer__social" aria-label="Social Connect">
+        <span class="footer__social-label">SOCIAL CONNECT</span>
+        <a href="#" class="social-icon" aria-label="Discord" title="Discord">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4c-.2.4-.4.9-.6 1.3a16 16 0 0 0-4.6 0A9 9 0 0 0 10 4a17.6 17.6 0 0 0-4.4 1.4C2.9 9 2.2 12.6 2.5 16.1A17.7 17.7 0 0 0 7.9 19c.4-.6.8-1.2 1.1-1.9-.6-.2-1.2-.5-1.8-.9l.4-.3c3.4 1.6 7.1 1.6 10.5 0l.4.3c-.6.4-1.2.7-1.8.9.3.7.7 1.3 1.1 1.9a17.6 17.6 0 0 0 5.4-2.9c.4-4-.6-7.6-2.9-10.7ZM9.7 14c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm5.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.6 7.2s-.2-1.5-.9-2.2c-.8-.9-1.7-.9-2.2-1C15.3 3.7 12 3.7 12 3.7h0s-3.3 0-6.5.3c-.5 0-1.4.1-2.2 1-.7.7-.9 2.2-.9 2.2S2.2 9 2.2 10.7v1.6c0 1.7.2 3.5.2 3.5s.2 1.5.9 2.2c.8.9 1.9.9 2.4 1 1.7.2 7.3.3 7.3.3s3.3 0 6.5-.3c.5 0 1.4-.1 2.2-1 .7-.7.9-2.2.9-2.2s.2-1.7.2-3.5v-1.6c0-1.7-.2-3.5-.2-3.5ZM9.9 14.6V8.9l5.8 2.9-5.8 2.8Z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.2c-5.5 0-10 4.5-10 10 0 4.4 2.9 8.1 6.8 9.4.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.6 1 1.5 1 2.6 0 3.8-2.4 4.6-4.6 4.9.3.3.6.9.6 1.8v2.6c0 .3.2.6.7.5 3.9-1.3 6.8-5 6.8-9.4 0-5.5-4.5-10-10-10Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
