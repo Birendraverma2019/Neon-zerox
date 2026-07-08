@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --cyan:#25e5ff;
+    --purple:#a855f7;
+    --pink:#ff4fd8;
+    --card-bg:rgba(15,18,28,0.65);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html,body{
+    min-height:100%;
+    font-family:'Segoe UI', 'Poppins', sans-serif;
+  }
+
+  body{
+    background-color:#05060a;
+    background-image:
+      linear-gradient(rgba(37,229,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37,229,255,0.06) 1px, transparent 1px),
+      radial-gradient(ellipse at 50% 100%, rgba(120,40,180,0.35) 0%, rgba(30,10,50,0.15) 35%, transparent 70%);
+    background-size:36px 36px, 36px 36px, 100% 100%;
+    background-attachment:fixed;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px 14px;
+  }
+
+  .card{
+    width:100%;
+    max-width:560px;
+    background:var(--card-bg);
+    border:1px solid rgba(37,229,255,0.35);
+    border-radius:22px;
+    padding:26px 24px 30px;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+      0 0 20px rgba(37,229,255,0.25),
+      0 0 60px rgba(168,85,247,0.15),
+      inset 0 0 30px rgba(37,229,255,0.04);
+  }
+
+  /* Back to Home button */
+  .back-home{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 18px;
+    border:1.5px solid var(--cyan);
+    border-radius:30px;
+    color:var(--cyan);
+    text-decoration:none;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:0.5px;
+    background:rgba(37,229,255,0.05);
+    box-shadow:0 0 10px rgba(37,229,255,0.4);
+    transition:all 0.25s ease;
+  }
+  .back-home:hover{
+    background:var(--cyan);
+    color:#04121a;
+    box-shadow:0 0 18px rgba(37,229,255,0.8);
+    transform:translateY(-2px);
+  }
+
+  .title-wrap{
+    text-align:center;
+    margin:22px 0 26px;
+  }
+  .title-wrap h1{
+    font-size:clamp(1.8rem, 6vw, 2.4rem);
+    font-weight:700;
+    background:linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 30px rgba(37,229,255,0.35);
+    letter-spacing:1px;
+  }
+
+  .social-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+  }
+
+  @media (min-width:420px){
+    .social-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (min-width:520px){
+    .social-grid{grid-template-columns:repeat(4, 1fr);}
+  }
+
+  .social-card{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:13px 8px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px;
+    color:#e6f7ff;
+    text-decoration:none;
+    font-size:13.5px;
+    font-weight:500;
+    transition:all 0.25s ease;
+  }
+
+  .social-card i{
+    font-size:16px;
+    width:26px;
+    height:26px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  .social-card:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,0.06);
+  }
+
+  /* brand-specific glow + icon color */
+  .social-card.email i{color:#ea4335;}
+  .social-card.email:hover{border-color:#ea4335; box-shadow:0 0 16px rgba(234,67,53,0.45);}
+
+  .social-card.facebook i{color:#1877f2;}
+  .social-card.facebook:hover{border-color:#1877f2; box-shadow:0 0 16px rgba(24,119,242,0.45);}
+
+  .social-card.instagram i{color:#e1306c;}
+  .social-card.instagram:hover{border-color:#e1306c; box-shadow:0 0 16px rgba(225,48,108,0.45);}
+
+  .social-card.github i{color:#e6edf3;}
+  .social-card.github:hover{border-color:#e6edf3; box-shadow:0 0 16px rgba(230,237,243,0.45);}
+
+  .social-card.discord i{color:#5865f2;}
+  .social-card.discord:hover{border-color:#5865f2; box-shadow:0 0 16px rgba(88,101,242,0.45);}
+
+  .social-card.twitter i{color:#ffffff;}
+  .social-card.twitter:hover{border-color:#ffffff; box-shadow:0 0 16px rgba(255,255,255,0.45);}
+
+  .social-card.whatsapp i{color:#25d366;}
+  .social-card.whatsapp:hover{border-color:#25d366; box-shadow:0 0 16px rgba(37,211,102,0.45);}
+
+  @media (max-width:380px){
+    .social-card{font-size:12.5px; padding:11px 6px;}
+    .card{padding:20px 16px 24px;}
+  }
+
+  /* Bigger desktop / laptop screens */
+  @media (min-width:900px){
+    .card{
+      max-width:640px;
+      padding:36px 40px 42px;
+      border-radius:26px;
+    }
+    .back-home{
+      padding:11px 22px;
+      font-size:14px;
+    }
+    .title-wrap{margin:30px 0 34px;}
+    .title-wrap h1{font-size:2.6rem;}
+    .social-card{
+      padding:16px 10px;
+      font-size:14.5px;
+    }
+    .social-card i{font-size:18px; width:28px; height:28px;}
+  }
+
+  /* Extra large desktop monitors */
+  @media (min-width:1400px){
+    .card{max-width:720px; padding:44px 48px 50px;}
+    .title-wrap h1{font-size:2.9rem;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- ===== BACK TO HOME BUTTON =====
+         href="index.html" ko apne home page ke link se badal dena -->
+    <a href="index.html" class="back-home">
+      <i class="fa-solid fa-arrow-left"></i> Back to game
+    </a>
+
+    <div class="title-wrap">
+      <h1>Contact</h1>
+    </div>
+
+    <!-- ===== SOCIAL ICONS =====
+         Har card ka href apne asli account link se replace kar dena -->
+    <div class="social-grid">
+
+      <a href="mailto:rv9890974@gmail.com" target="_blank" rel="noopener" class="social-card email">
+        <i class="fa-solid fa-envelope"></i> Gmail
+      </a>
+
+      <a href="https://birendraverma2019.github.io/Neon-zerox/ target="_blank" rel="noopener" class="social-card facebook">
+        <i class="fa-brands fa-facebook"></i> Facebook
+      </a>
+
+      <a href="https://www.instagram.com/itz_zerox__2019?igsh=MWwzNDR0cWh6ZnZjcg=="noopener" class="social-card instagram">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+
+      <a href="https://github.com/Birendraverma2019" rel="noopener" class="social-card github">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+
+      <a href="https://birendraverma2019.github.io/Neon-zerox/" target="_blank" rel="noopener" class="social-card discord">
+        <i class="fa-brands fa-discord"></i> Discord
+      </a>
+
+      <a href="https://birendraverma2019.github.io/Neon-zerox/="_blank" rel="noopener" class="social-card twitter">
+        <i class="fa-brands fa-x-twitter"></i> X / Twitter
+      </a>
+
+      <a href="https://birendraverma2019.github.io/Neon-zerox/"_blank" rel="noopener" class="social-card whatsapp">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
